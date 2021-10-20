@@ -1,0 +1,220 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=2">
+	<title></title>
+	<link rel="shortcut icon" type="image/x-icon">
+	<meta property="og:site_name" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="css.css?version=99">
+	<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+	<script>
+		const provider = new ethers.providers.Web3Provider(window.ethereum)
+		const signer = provider.getSigner()
+		var myMetamaskAddress
+		signer.getAddress().then(function(result) {
+			myMetamaskAddress = result
+		});
+		console.log(myMetamaskAddress);
+	</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div id="logooverlay" style="visibility:visible" class="logooverlay"><div class="center">
+<p class="welcome text-align-center">Welcome to the</p>
+<p class="welcome text-align-center">AX DEX</p>
+<p class="welcome2 text-align-center">Test Environment</p>
+<p class="welcome2 text-align-center"><img src="metamaskicon.png" target="_blank" /></p>
+<p class="welcome2 text-align-center">This website requires <a href="https://www.metamask.io/" target="_blank">metamask</a> to function</p>
+</div></div>
+<div class="beloverlay"><img style="height:100%; width:100%;" src="background3.jpg" /></div>
+<div class="overlay">
+	<div class="spacehead" id="spacehead">
+		<div class="fnsp" id="head">AthleteX DEX Test Environment<br>
+			<button style="visibility:visible" class="enableEthereumButton">Enable Metamask</button>
+		</div>
+	</div>
+		<div class="spaceside" id="side">
+			<div class="pair-box">
+				<div class="createPairLabel"><h2>AthleteXFactory - Pair Functions</h2><h3>Address: 0x778EF52b9c18dBCbc6B4A8a58B424eA6cEa5a551</h3></div>
+					<form>
+						<div class="input-box">
+							<input type="text" name="tokenA" id="tokenA" required="">
+							<label>Token A Address</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="tokenB" id="tokenB" required="">
+							<label>Token B Address</label>
+						</div>
+						<div class="spaceinput">
+							<div class="createPairsButton">
+								<a href="#" onclick="createPairs(document.getElementById('tokenA').value,document.getElementById('tokenB').value)"><span></span><span></span><span></span><span></span>Create Pair<br></a>
+							</div>
+						</div>
+						<div class="spaceinput">
+							<div class="getPairsButton">
+								<a href="#" onclick="getPair(document.getElementById('tokenA').value,document.getElementById('tokenB').value)"><span></span><span></span><span></span><span></span>Get Pair Address<br></a>
+							</div>
+						</div>
+						<div class="spaceinput">
+							<div class="getAllPairsLengthButton">
+								<a href="#" onclick="getAllPairsLength()"><span></span><span></span><span></span><span></span>Get All Pairs Length<br></a>
+							</div>
+						</div>
+						<div class="spaceinput">
+							<div class="getInitCodePairHashButton">
+								<a href="#" onclick="getInitCodePairHash()"><span></span><span></span><span></span><span></span>Get INIT_CODE<br></a>
+							</div>
+						</div>
+						<div class="spaceoutput">
+							<label>Output: <span class="outputFunc"></span></label>
+						</div>
+					</form>
+			</div>
+		</div>
+		<div class="spaceside" id="side">
+			<div class="spacetoggle"><p id="toggle">
+				<span><img src="approve.png"><a href="#"></a></img></span>
+				<span><img src="liquidity.png"><a href="#"></a></img></span>
+				<span><img src="swap.png"><a href="#"></a></img></span>
+			</p></div>
+				<div id="left" class="pair-box">
+				<div class="createPairLabel"><h2>AthleteXRouter - Liquidity Functions</h2><h3>Address: 0x7EFc361e568d0038cfB200dF9d9Be27943e19017</h3></div>
+					<form>
+						<div class="input-box">
+							<input type="text" name="addLiquidityTokenA" id="addLiquidityTokenA" required="">
+							<label>Token A Address</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="addLiquidityTokenB" id="addLiquidityTokenB" required="">
+							<label>Token B Address</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="addLiquidityAmountADesired" id="addLiquidityAmountADesired" required="">
+							<label>Token A Amount (in Wei)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="addLiquidityAmountBDesired" id="addLiquidityAmountBDesired" required="">
+							<label>Token B Amount (in Wei)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="liquidityRemoveAmount" id="liquidityRemoveAmount" required="">
+							<label>Liquidity (in Wei)(Remove Only)</label>
+						</div>
+						<div class="spaceinput">
+							<div class="addLiquidity">
+								<a href="#" onclick="addLiquidity(document.getElementById('addLiquidityTokenA').value,document.getElementById('addLiquidityTokenB').value,document.getElementById('addLiquidityAmountADesired').value,document.getElementById('addLiquidityAmountBDesired').value)"><span></span><span></span><span></span><span></span>Add Liquidity<br></a>
+							</div>
+						</div>
+						<div class="spaceinput">
+							<div class="removeLiquidity">
+								<a href="#" onclick="removeLiquidity(document.getElementById('addLiquidityTokenA').value,document.getElementById('addLiquidityTokenB').value,document.getElementById('addLiquidityAmountADesired').value,document.getElementById('addLiquidityAmountBDesired').value,document.getElementById('liquidityRemoveAmount').value)"><span></span><span></span><span></span><span></span>Remove Liquidity<br></a>
+							</div>
+						</div>
+						<div class="spaceoutput">
+							<label>Output: <span class="routerOutputFunc"></span></label>
+						</div>
+					</form>
+			</div>
+			<div id="right" class="pair-box">
+				<div class="createPairLabel"><h2>AthleteXRouter - Swap Functions</h2><h3>Address: 0x7EFc361e568d0038cfB200dF9d9Be27943e19017</h3></div>
+					<form>
+						<div class="input-box">
+							<input type="text" name="amountIn" id="amountIn" required="">
+							<label>Amount In (in Wei)(Swap Exact For Only)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="amountOutMin" id="amountOutMin" required="">
+							<label>Amount Out Minimum (in Wei)(Swap Exact For Only)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="amountOut" id="amountOut" required="">
+							<label>Amount Out (in Wei)(Swap For Exact Only)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="amountInMax" id="amountInMax" required="">
+							<label>Amount In Maximum (in Wei)(Swap For Exact Only)</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="tokenIn" id="tokenIn" required="">
+							<label>Token Address In</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="tokenOut" id="tokenOut" required="">
+							<label>Token Address Out</label>
+						</div>
+						<div class="spaceinput">
+							<div class="swapExactFor">
+								<a href="#" onclick="swapExactFor(document.getElementById('amountIn').value,document.getElementById('amountOutMin').value,document.getElementById('tokenIn').value,document.getElementById('tokenOut').value)"><span></span><span></span><span></span><span></span>Swap Exact For<br></a>
+							</div>
+						</div>
+						<div class="spaceinput">
+							<div class="swapForExact">
+								<a href="#" onclick="swapForExact(document.getElementById('amountOut').value,document.getElementById('amountInMax').value,document.getElementById('tokenIn').value,document.getElementById('tokenOut').value)"><span></span><span></span><span></span><span></span>Swap For Exact<br></a>
+							</div>
+						</div>
+						<div class="spaceoutput">
+							<label>Output: <span class="routerOutputFunc"></span></label>
+						</div>
+					</form>
+			</div>
+			<div id="center" class="pair-box">
+				<div class="createPairLabel"><h2>AthleteXRouter - Approve Functions</h2><h3>Address: 0x7EFc361e568d0038cfB200dF9d9Be27943e19017</h3></div>
+					<form>
+						<div class="input-box">
+							<input type="text" name="approveRouterAddress" id="approveRouterAddress" required="">
+							<label>Token or Swap Address</label>
+						</div>
+						<div class="input-box">
+							<input type="text" name="approveAmount" id="approveAmount" required="">
+							<label>Amount (in Wei)</label>
+						</div>
+						<div class="spaceinput">
+							<div class="approveRouter">
+								<a href="#" onclick="approveRouter(document.getElementById('approveRouterAddress').value,document.getElementById('approveAmount').value)"><span></span><span></span><span></span><span></span>Approve Router<br></a>
+							</div>
+						</div>
+						<div class="spaceoutput">
+							<label>Output: <span class="approveOutputFunc"></span></label>
+						</div>
+					</form>
+			</div>
+		</div>
+		<div class="spacesideright" id="side">
+			<div class="pair-box">
+				<div class="createPairLabel"><h2>AthleteXSwap - Info</h2><h3>In Progress</h3></div>
+					<form>
+						<div class="input-box">
+							<input type="text" name="swapAddressInfo" id="swapAddressInfo" required="">
+							<label>Swap Address</label>
+						</div>
+						<div class="spaceinput">
+							<div class="getSwapInfoButton">
+								<a href="#" onclick="getSwapInfo(document.getElementById('swapAddressInfo').value)"><span></span><span></span><span></span><span></span>Get Info<br></a>
+							</div>
+						</div>
+						<div class="spaceoutput">
+							<label>Output: <span class="infoOutputFunc"></span></label>
+						</div>
+					</form>
+			</div>
+		</div>
+	<div class="spacefoot" id="spacefoot">
+		<div class="fnsp" id="foot">AthleteX DEX Test Environment<br>
+		<div class="status"> o n l i n e</div></div>
+	</div>
+</div>
+<div id="footer" class="footer text-align-center" style="visibility:visible"></div>
+<script>
+	if (typeof window.ethereum !== 'undefined') {
+		console.log('MetaMask is installed!');
+		document.getElementById('logooverlay').style.visibility='hidden';
+	}
+</script>
+<script src="enableEth.js?version=99"></script>
+<script src="ethers.js?version=99"></script>
+<script src="toggle.js?version=99"></script>
+</body>
+</html>
